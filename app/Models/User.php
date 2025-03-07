@@ -67,6 +67,18 @@ class User extends Authenticatable
     }
 
     public function scoreOnScoreboard() {
-        $this->hasOne(Scoreboard::class, 'user_id');
+        return $this->hasOne(Scoreboard::class, 'user_id');
+    }
+
+
+// courses part
+
+
+    public function createdCourses() {
+        return $this->hasMany(Course::class, 'created_by');
+    }
+
+    public function updatedCourses() {
+        return $this->hasMany(Course::class, 'updated_by');
     }
 }
