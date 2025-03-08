@@ -55,7 +55,7 @@ class User extends Authenticatable
     }
 
     public function scopeSelectSomeUserData($query) {
-        return $query->select('users.id', 'first_name', 'last_name', 'gender', 'email', 'image');
+        return $query->select('user_id', 'first_name', 'last_name', 'gender', 'email', 'image');
     }
 
     public function UserInfo() {
@@ -80,5 +80,13 @@ class User extends Authenticatable
 
     public function updatedCourses() {
         return $this->hasMany(Course::class, 'updated_by');
+    }
+ 
+    public function createdCourseMaterials() {
+        return $this->hasMany(CourseMaterial::class, 'created_by');
+    }
+
+    public function updatedCourseMaterials() {
+        return $this->hasMany(CourseMaterial::class, 'updated_by');
     }
 }
